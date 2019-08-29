@@ -448,7 +448,7 @@ void mousePressed() {
     }
   }
 
-  //施設1レベルアップ
+  //名言1レベルアップ
   if (hirao >= time1_lv_next) {
     time1_lv_up = true;
     if ((mouseX >= time_lv_x)&&(mouseX <= width)&&(mouseY >= 100)&&(mouseY < 200)) {
@@ -459,7 +459,7 @@ void mousePressed() {
     }
   }
 
-  //施設2レベルアップ
+  //名言2レベルアップ
   if (hirao >= time2_lv_next) {
     time2_lv_up = true;
     if ((mouseX >= time_lv_x)&&(mouseX <= width)&&(mouseY >= 200)&&(mouseY < 300)) {
@@ -470,7 +470,7 @@ void mousePressed() {
     }
   }
 
-  //施設3レベルアップ
+  //名言3レベルアップ
   if (hirao >= time3_lv_next) {
     time3_lv_up = true;
     if ((mouseX >= time_lv_x)&&(mouseX <= width)&&(mouseY >= 300)&&(mouseY < 400)) {
@@ -481,7 +481,7 @@ void mousePressed() {
     }
   }
 
-  //施設4レベルアップ
+  //名言4レベルアップ
   if (hirao >= time4_lv_next) {
     time4_lv_up = true;
     if ((mouseX >= time_lv_x)&&(mouseX <= width)&&(mouseY >= 400)&&(mouseY < 500)) {
@@ -492,7 +492,7 @@ void mousePressed() {
     }
   }
 
-  //施設5レベルアップ
+  //名言5レベルアップ
   if (hirao >= time5_lv_next) {
     time5_lv_up = true;
     if ((mouseX >= time_lv_x)&&(mouseX <= width)&&(mouseY >= 500)&&(mouseY < 600)) {
@@ -503,7 +503,7 @@ void mousePressed() {
     }
   }
 
-  //施設6レベルアップ
+  //名言6レベルアップ
   if (hirao >= time6_lv_next) {
     time6_lv_up = true;
     if ((mouseX >= time_lv_x)&&(mouseX <= width)&&(mouseY >= 600)&&(mouseY < 700)) {
