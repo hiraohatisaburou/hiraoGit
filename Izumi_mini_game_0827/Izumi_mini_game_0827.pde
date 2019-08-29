@@ -1,63 +1,92 @@
+import ddf.minim.*;
+Minim minim;
+AudioPlayer player;
 final float GRAVITY=9.8;
+
 float speed=0;
 float y;//落下してくるもののy
 float x;//落下してくるもののx
 
 float x_re; //なんぼ―君になるであろう物のxの値
 float easing = 0.5;
-int bingo=0;
-float goodx=0;
-float goody=0;
 float kasoku=0;
-PImage img; //画像データ
+
+PImage img_na;
+PImage img_hi;
+
 
 void setup() {
-  size(880, 880);
+  size(680, 880);
+  frameRate(100);
   //画像を読み込み
-  img = loadImage("photo.jpg");
+ // img_rei = loadImage("photo.jpg");
+  img_na = loadImage("nambo.png");
+  img_hi = loadImage("Hirao_kai.png");
+  minim = new Minim(this);
+  player = minim.loadFile("retrogamecenter.mp3");
+  player.play();
   x = 250;
 }
 
 void draw() {
-   background(255);
-  //画面に画像データを表示
-  image(img, width/4, height/4, width/2, height/2);
+   
+   background(255); 
+   image(img_na, x_re-20, 670, width/4, height/4);//なんぼ―君の画像
+   image(img_hi, x-160, y-80, width/2, height/4);//ひらおの画像
+  
    speed+=9.8/60+kasoku;
-  y+=speed;
-  smooth();
-  noStroke();
-  fill(200);
-  ellipse(x,y,50,50);
+   y+=speed;
+   smooth();
+   noStroke();
+   fill(200);
+ ellipse(x,y+30,230,230); // 平尾
   
-  float dx = mouseX -x_re;
-  if(abs(dx) > 10){
-  x_re +=dx*easing;
+  float dx_na = mouseX -x_re;  //なんぼ―君の左右への動き
+  if(abs(dx_na) > 10){
+  x_re +=dx_na*easing;
   }
-  rect(x_re, 780, 80, 90);
+  ellipse(x_re+60, 750, 120, 120);//  なんぼ―君
   
-  if(y>880-25){
-    speed=-speed*0.6;
-    y=880-25;
+ 
+ if(y>880){
+ 
+   reset();
+ 
+ }
+   
+  float dx,dy,dr;
+  
+  dx = abs(x_re+60-x);
+  dy = abs(750-y+30);
+  dr = 60+115;
+  
+  if(sqrt(sq(dx)+sq(dy)) < dr){
+  
+  textSize(100);
+  
+  fill(0,0,255);
+  text("Game Over",100,300);
+  
+  gameOver();
+  
   }
-  if(mouseX>x-25 && mouseX<x+25 &&
-     mouseY>y-25 && mouseY<y+25){
-     bingo=60;
-     reset(); 
-     kasoku+=0.01;
-     goodx=mouseX;
-     goody=mouseY;
-     }
-  if(bingo>0){
-    fill(0);
-    textSize(50);
-    text("good!",goodx,goody);
-    bingo-=1;
-  }
+  
+  
   
 }  
 void reset(){
       y=-50;
     speed=0;
-    x=50+random(400);
+    x=50+random(680);
     
+}
+
+
+void gameOver(){
+
+   player.close();  //サウンドデータを終了
+  minim.stop();
+  super.stop();
+  
+
 }
